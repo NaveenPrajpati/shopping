@@ -20,12 +20,8 @@ dotenv.config();
 export const createProductController = async (req, res) => {
   try {
 
-    console.log(req.fields)
-    console.log(req.body)
-    console.log(req.files)
-
-    const { name, description, price, category, quantity, shipping } =
-      req.fields;
+    const { name, description, price, category, quantity, shipping } =req.body;
+      const array = req.body.tags.split(',');
     const { photo } = req.files;
     //alidation
     switch (true) {
@@ -45,11 +41,20 @@ export const createProductController = async (req, res) => {
           .send({ error: "photo is Required and should be less then 1mb" });
     }
 
-    const products = new productModel({ ...req.fields, slug: slugify(name) });
-    if (photo) {
-      products.photo.data = fs.readFileSync(photo.path);
-      products.photo.contentType = photo.type;
+    const products = new productModel({ ...req.body,tags:array, slug: slugify(name) });
+
+    if (req.files && req.files.photo) {
+      const photoFiles = Array.isArray(req.files.photo) ? req.files.photo : [req.files.photo];
+      for (let i = 0; i < photoFiles.length; i++) {
+        const image = photoFiles[i];
+        const imageData = {
+          data: image.data,
+          contentType: image.mimetype,
+        };
+        products.photo.push(imageData);
+      }
     }
+
     await products.save();
     res.status(201).send({
       success: true,
@@ -116,9 +121,10 @@ export const getSingleProductController = async (req, res) => {
 export const productPhotoController = async (req, res) => {
   try {
     const product = await productModel.findById(req.params.pid).select("photo");
-    if (product.photo.data) {
-      res.set("Content-type", product.photo.contentType);
-      return res.status(200).send(product.photo.data);
+    if (product.photo) {
+      // res.set("Content-type", product.photo.contentType);
+      
+      return res.status(200).send(product.photo[0].data);
     }
   } catch (error) {
     console.log(error);
@@ -128,6 +134,29 @@ export const productPhotoController = async (req, res) => {
       error,
     });
   }
+
+  // try {
+  //   const { pid } = req.params;
+
+  //   // Find the product by ID
+  //   const product = await productModel.findById(pid);
+
+  //   // If the product is not found, return an error response
+  //   if (!product) {
+  //     return res.status(404).send({ success: false, message: 'Product not found' });
+  //   }
+
+  //   // Map the photo array to extract the image URLs
+  //   const photoUrls = product.photo.map((photo) => (
+  //      `data:${photo.contentType};base64,${photo.data.toString('base64')}`
+  //   ));
+  //   // console.log(photoUrls)
+  //   res.status(200).send({ success: true, photos: photoUrls });
+  // } catch (error) {
+  //   console.log(error);
+  //   res.status(500).send({ success: false, error, message: 'Error in retrieving product' });
+  // }
+
 };
 
 //delete controller

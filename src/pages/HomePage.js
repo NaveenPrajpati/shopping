@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import Layout from "./../components/Layout/Layout";
 import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
-import { getPhoto } from "../services/apiEndpoints";
+import { getCategory, getPhoto } from "../services/apiEndpoints";
 import ProductCard from "../components/ProductCard";
 
 const HomePage = () => {
@@ -25,7 +25,7 @@ const HomePage = () => {
   //get all cat
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get("http://localhost:4000/api/v1/category/get-category");
+      const { data } = await getCategory()
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -38,11 +38,12 @@ const HomePage = () => {
     getAllCategory();
     getTotal();
   }, []);
+
   //get products
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`http://localhost:4000/api/v1/product/product-list/${page}`);
+      const { data } = await getAllProducts(page)
       setLoading(false);
       setProducts(data.products);
     } catch (error) {
@@ -88,6 +89,7 @@ const HomePage = () => {
     }
     setChecked(all);
   };
+  
   useEffect(() => {
     if (!checked.length || !radio.length) getAllProducts();
   }, [checked.length, radio.length]);
@@ -108,6 +110,13 @@ const HomePage = () => {
       console.log(error);
     }
   };
+
+  // function getImage(id){
+  //  const img= getPhoto(id);
+  //  console.log(img)
+  //  return img;
+  // }
+
   return (
     <Layout title={"ALl Products - Best offers "}>
       {/* banner image */}
@@ -117,9 +126,9 @@ const HomePage = () => {
         alt="bannerimage"
         
       />
-      {/* category filter */}
       <div className="flex flex-col sm:flex-row justify-between gap-5">
         <div className=" w-[20%] p-2 ">
+      {/* category filter */}
           <h4 className="text-xl font-semibold">Filter By Category</h4>
         
           <div className="">

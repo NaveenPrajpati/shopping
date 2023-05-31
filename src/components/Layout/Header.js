@@ -55,8 +55,8 @@ const Header = () => {
                       All Categories
                     </Link>
                  
-                   {categories?.map((c) => (
-                    <div className="text-center my-2">
+                   {categories?.map((c,index) => (
+                    <div key={index} className="text-center my-2">
                     
                       <Link
                         className="text-blue-700  font-semibold "

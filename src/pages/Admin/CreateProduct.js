@@ -20,7 +20,7 @@ const CreateProduct = () => {
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
   const [shipping, setShipping] = useState("");
-  const [photo, setPhoto] = useState("");
+  const [photo, setPhoto] = useState([]);
   const [tags, settags] = useState([]);
 
   //get all category
@@ -40,6 +40,21 @@ const CreateProduct = () => {
     getAllCategory();
   }, []);
 
+  const [target, settarget] = useState()
+  function handleImageChange(event) {
+
+    const selectedFIles = [];
+    let targetFiles = event.target.files;
+    settarget(event.target.files)
+    let targetFilesObject = [...targetFiles]
+    targetFilesObject.map((file) => {
+      selectedFIles.push(URL.createObjectURL(file))
+    })
+    setPhoto(selectedFIles)
+  }
+
+
+
   //create product function
   const handleCreate = async (e) => {
     e.preventDefault();
@@ -49,12 +64,15 @@ const CreateProduct = () => {
       productData.append("description", description);
       productData.append("price", price);
       productData.append("quantity", quantity);
-      productData.append("photo", photo);
       productData.append("category", category);
-      // productData.append("tags", tags);
+      productData.append("tags", tags);
+      for (let i = 0; i < target.length; i++) {
+        productData.append('photo', target[i]);
+      }
+
       const { data } = await createProduct(productData)
       if (data?.success) {
-        toast.error(data?.message);
+        toast.success(data?.message);
       } else {
         toast.success("Product Created Successfully");
         navigate("/dashboard/admin/products");
@@ -71,12 +89,14 @@ const CreateProduct = () => {
   const handleInputChange = (event) => {
 
     setInputValue(event.target.value);
+
   };
 
   const handleChipAdd = () => {
     if (inputValue.trim() !== '') {
       settags([...tags, inputValue.trim()]);
       setInputValue('');
+
     }
   };
 
@@ -94,12 +114,13 @@ const CreateProduct = () => {
 
         <div className="min-w-[300px] w-[500px] p-2 rounded-md bg-gray-300">
           <h1 className="text-blue-500">Create Product</h1>
-          
+
           <div className="mx-auto w-75 ">
             <select
               className="p-2 border w-[300px] mb-2 rounded-md"
-              onChange={(value) => {
-                setCategory(value);
+              onChange={(event) => {
+
+                setCategory(event.target.value);
               }}
             >
               <option value="">choose catogery</option>
@@ -110,19 +131,19 @@ const CreateProduct = () => {
               ))}
             </select>
 
-        
-              <label className="w-full p-2 mb-2 cursor-pointer border text-center rounded-md">
-                 Upload Photo
-                <input
-                  type="file"
-                  name="photo"
-                  accept="image/*"
-                  onChange={(e) => setPhoto(e.target.files[0])}
-                  hidden
-                  multiple
-                 />
-              </label>
-      
+
+            <label className="w-full p-2 mb-2 cursor-pointer border text-center rounded-md">
+              Upload Photo
+              <input
+                type="file"
+                name="photo"
+                accept="image/*"
+                onChange={handleImageChange}
+                hidden
+                multiple
+              />
+            </label>
+
             <input
               type="text"
               value={name}
@@ -169,7 +190,6 @@ const CreateProduct = () => {
                 onChange={handleInputChange}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter') {
-                    console.log('first')
                     handleChipAdd();
                   }
                 }}
@@ -189,7 +209,7 @@ const CreateProduct = () => {
 
 
             <select
-             
+
               showSearch
               className="p-2 border w-[300px] mb-2 rounded-md outline-none"
               onChange={(value) => {
@@ -207,17 +227,18 @@ const CreateProduct = () => {
           </div>
         </div>
         <div className=" p-2 flex flex-wrap">
-        {photo && (
-              <div className="text-center m-1 max-w-[300px] max-h-[300px]">
-                <img
-                  src={URL.createObjectURL(photo)}
-                  alt="product_photo"
-                  height={"200px"}
-                  className="img img-responsive"
-                />
-                <p>{photo.name}</p>
-              </div>
-            )}
+          {photo && photo.map((it, index) =>
+
+            <div key={index} className="text-center m-1 max-w-[300px] max-h-[300px]">
+              <img
+                src={it}
+                alt="product_photo"
+                height={"200px"}
+                className=""
+              />
+              <p>{photo.name}</p>
+            </div>
+          )}
 
         </div>
       </div>

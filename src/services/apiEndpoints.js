@@ -11,8 +11,11 @@ export const getPhoto=(id)=>{
 export const deleteCategory=(id)=>{
     return axios.delete(categoryUrl+`/delete-category/${id}`)
 }
-export const getCategory=(id)=>{
+export const getCategory=()=>{
     return axios.get(categoryUrl+"/get-category");
+}
+export const getAllProducts=(page)=>{
+    return axios.get(productUrl+`/product-list/${page}`);
 }
 export const getProduct=(slug)=>{
     return axios.get(productUrl+`/product-category/${slug}`)
