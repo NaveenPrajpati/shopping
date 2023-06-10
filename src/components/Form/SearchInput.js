@@ -21,19 +21,19 @@ const SearchInput = () => {
   return (
     <div>
       <form
-        className="d-flex search-form"
+        className="flex border-2 rounded-lg p-1 justify-center gap-1 sm:w-[500px]"
         role="search"
         onSubmit={handleSubmit}
       >
         <input
-          className="form-control me-2"
+          className="rounded-md p-1 w-[80%] outline-none font-semibold"
           type="search"
           placeholder="Search"
           aria-label="Search"
           value={values.keyword}
           onChange={(e) => setValues({ ...values, keyword: e.target.value })}
         />
-        <button className="btn btn-outline-success" type="submit">
+        <button className="p-2 rounded-md bg-black text-white" type="submit">
           Search
         </button>
       </form>

@@ -26,11 +26,13 @@ import CartPage from "./pages/CartPage";
 import AdminOrders from "./pages/Admin/AdminOrders";
 import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
+import Navbar from "./components/Layout/Navbar";
 
 function App() {
   return (
     <div>
     <Header />
+    <Navbar/>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/product/:slug" element={<ProductDetails />} />
