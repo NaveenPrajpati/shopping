@@ -23,3 +23,7 @@ export const getProduct=(slug)=>{
 export const createProduct=(productData)=>{
     return axios.post(productUrl+"/create-product",productData);
 }
+
+
+//homepage endpoints
+

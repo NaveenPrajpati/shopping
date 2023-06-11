@@ -12,7 +12,7 @@ const Layout = ({ children, title, description, keywords, author }) => {
         <meta name="author" content={author} />
         <title>{title}</title>
       </Helmet>
-      <div className="h-[100vh]">
+      <div className="">
         <Toaster />
         {children}
       </div>

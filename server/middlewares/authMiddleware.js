@@ -31,8 +31,8 @@ export const isAdmin = async (req, res, next) => {
     console.log(error);
     res.status(401).send({
       success: false,
-      error,
       message: "Error in admin middelware",
+      error,
     });
   }
 };

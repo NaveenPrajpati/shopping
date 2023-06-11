@@ -19,9 +19,9 @@ const SearchInput = () => {
     }
   };
   return (
-    <div>
+    
       <form
-        className="flex border-2 rounded-lg p-1 justify-center gap-1 sm:w-[500px]"
+        className="flex border-2 border-teal-400 rounded-lg justify-center gap-1 sm:w-[500px]"
         role="search"
         onSubmit={handleSubmit}
       >
@@ -37,7 +37,7 @@ const SearchInput = () => {
           Search
         </button>
       </form>
-    </div>
+    
   );
 };
 

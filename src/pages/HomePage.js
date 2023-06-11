@@ -10,6 +10,11 @@ import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
 import { getAllProducts, getCategory, getPhoto } from "../services/apiEndpoints";
 import ProductCard from "../components/ProductCard";
+import { bannerData } from "../constants/homePageConst/homeitems";
+import {MdOutlineLocalShipping} from 'react-icons/md'
+import DealofDay from "../components/hompageComp/HomeDeals";
+import Footer from "../components/Layout/Footer";
+
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -45,6 +50,7 @@ const HomePage = () => {
       setLoading(true);
       const { data } = await getAllProducts(page)
       setLoading(false);
+
       setProducts(data.products);
     } catch (error) {
       setLoading(false);
@@ -121,51 +127,33 @@ const HomePage = () => {
         alt="bannerimage"
         
       />
-      <div className="flex flex-col sm:flex-row justify-between gap-5">
-        <div className=" w-[20%] p-2 ">
-      {/* category filter */}
-          <h4 className="text-xl font-semibold">Filter By Category</h4>
-        
-          <div className="">
-            {categories?.map((c) => (
-              <Checkbox
-                key={c._id}
-                onChange={(e) => handleFilter(e.target.checked, c._id)}
-              >
-                {c.name}
-              </Checkbox>
-            ))}
-          </div>
-          {/* price filter */}
-          <h4 className="mt-4">Filter By Price</h4>
-          <div className="d-flex flex-column">
-            <Radio.Group onChange={(e) => setRadio(e.target.value)}>
-              {Prices?.map((p) => (
-                <div key={p._id}>
-                  <Radio value={p.array}>{p.name}</Radio>
-                </div>
-              ))}
-            </Radio.Group>
-          </div>
-            <button
-              className=" rounded-md p-2 mx-2 font-semibold text-white"
-              onClick={() => window.location.reload()}
-            >
-              RESET FILTERS
-            </button>
-        </div>
+      <div className=" bg-slate-100">
+  {/* first strip div   */}
+ <div className=" bg-yellow-200 flex flex-wrap justify-center gap-5 p-2">
+ {bannerData.map((item)=>(
+  <div className="flex gap-2 items-center">
+    {item.icon}
+    <div className=" space-y-0">
+      <p className=" leading-3">{item.title}</p>
+      <p className=" leading-3">{item.Description}</p>
+    </div>
+  </div>
+ ))
+
+ }
+ </div>
         
 {/* all product */}
         <div className="w-full ">
-          <h1 className="text-center text-2xl">All Products</h1>
-          
-          <div className="flex flex-wrap">
+          <h1 className="text-center text-2xl">Deals</h1>
+          <DealofDay/>
+          {/* <div className="flex flex-wrap">
             {products?.map((p) => (
            
               <ProductCard key={p._id} photo={getPhoto(p._id)} name={p.name} slug={p.slug} desc={p.description} price={p.price}/>
             
             ))}
-          </div>
+          </div> */}
 
 
           <div className="m-2 p-3">
@@ -188,6 +176,8 @@ const HomePage = () => {
               </button>
             )}
           </div>
+<Footer></Footer>
+
         </div>
       </div>
     </Layout>
