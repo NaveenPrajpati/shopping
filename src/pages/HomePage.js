@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Checkbox, Radio } from "antd";
-import { Prices } from "../components/Prices";
 import { useCart } from "../context/cart";
 import axios from "axios";
-import toast from "react-hot-toast";
 import Layout from "./../components/Layout/Layout";
 import { AiOutlineReload } from "react-icons/ai";
-import "../styles/Homepage.css";
 import { getAllProducts, getCategory, getPhoto } from "../services/apiEndpoints";
-import ProductCard from "../components/ProductCard";
 import { bannerData } from "../constants/homePageConst/homeitems";
-import {MdOutlineLocalShipping} from 'react-icons/md'
 import DealofDay from "../components/hompageComp/HomeDeals";
 import Footer from "../components/Layout/Footer";
 
@@ -61,7 +55,7 @@ const HomePage = () => {
   //getTOtal COunt
   const getTotal = async () => {
     try {
-      const { data } = await axios.get("http://localhost:4000/api/v1/product/product-count");
+      const { data } = await axios.get("http://localhost:4000/product/product-count");
       setTotal(data?.total);
     } catch (error) {
       console.log(error);
@@ -76,7 +70,7 @@ const HomePage = () => {
   const loadMore = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`http://localhost:4000/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`http://localhost:4000/product/product-list/${page}`);
       setLoading(false);
       setProducts([...products, ...data?.products]);
     } catch (error) {
@@ -107,7 +101,7 @@ const HomePage = () => {
   //get filterd product
   const filterProduct = async () => {
     try {
-      const { data } = await axios.post("http://localhost:4000/api/v1/product/product-filters", {
+      const { data } = await axios.post("http://localhost:4000/product/product-filters", {
         checked,
         radio,
       });
@@ -156,26 +150,7 @@ const HomePage = () => {
           </div> */}
 
 
-          <div className="m-2 p-3">
-            {products && products.length < total && (
-              <button
-                className="flex text-green-800 gap-1 font-bold items-center"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setPage(page + 1);
-                }}
-              >
-                {loading ? (
-                  "Loading ..."
-                ) : (
-                  <>
-                    {" "}
-                    Loadmore <AiOutlineReload />
-                  </>
-                )}
-              </button>
-            )}
-          </div>
+     
 <Footer></Footer>
 
         </div>

@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import { useParams, useNavigate } from "react-router-dom";
-import "../styles/CategoryProductStyles.css";
-import { Prices } from "../components/Prices";
+import { Prices } from "../constants/homePageConst/Prices";
 import { Checkbox, Radio } from "antd";
-import axios from "axios";
 import { getPhoto, getProduct } from "../services/apiEndpoints";
 import ProductCard from "../components/ProductCard";
 const CategoryProduct = () => {

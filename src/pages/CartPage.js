@@ -4,10 +4,8 @@ import { useCart } from "../context/cart";
 import { useAuth } from "../context/auth";
 import { useNavigate } from "react-router-dom";
 import DropIn from "braintree-web-drop-in-react";
-import { AiFillWarning } from "react-icons/ai";
 import axios from "axios";
 import toast from "react-hot-toast";
-import "../styles/CartStyles.css";
 import ButtonCommon from "../components/Layout/ButtonCommon";
 
 const CartPage = () => {
@@ -50,7 +48,7 @@ const CartPage = () => {
   //get payment gateway token
   const getToken = async () => {
     try {
-      const { data } = await axios.get("http://localhost:4000/api/v1/product/braintree/token");
+      const { data } = await axios.get("http://localhost:4000/product/braintree/token");
       setClientToken(data?.clientToken);
     } catch (error) {
       console.log(error);
@@ -104,7 +102,7 @@ const CartPage = () => {
                 <div className="flex gap-2 w-full  bg-cyan-200 p-2 rounded-xl" key={p._id}>
                   <div className="w-[100px]">
                     <img
-                      src={`http://localhost:4000/api/v1/product/product-photo/${p._id}`}
+                      src={`http://localhost:4000/product/product-photo/${p._id}`}
                       className=""
                       alt={p.name}
                       width="100%"
@@ -130,7 +128,7 @@ const CartPage = () => {
             </div>
 
             
-            <div className="bg-gray-300 p-2 rounded-lg min-w-[300px] min-h-[400px]">
+            <div className="bg-gray-300 p-2 rounded-lg min-w-[300px] min-h-[400px] flex flex-col justify-between">
               <h2>Cart Summary</h2>
               <p>Total | Checkout | Payment</p>
               <hr />

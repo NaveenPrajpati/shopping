@@ -27,6 +27,7 @@ import AdminOrders from "./pages/Admin/AdminOrders";
 import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
 import Navbar from "./components/Layout/Navbar";
+import AllProducts from "./pages/AllProducts";
 
 function App() {
   return (
@@ -35,6 +36,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/product/:slug" element={<ProductDetails />} />
+
+        <Route path="/allproducts" element={<AllProducts />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/category/:slug" element={<CategoryProduct />} />
