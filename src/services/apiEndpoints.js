@@ -1,8 +1,8 @@
 import axios from "axios"
 
-const authUrl='http://localhost:4000/api/v1/auth'
-const productUrl='http://localhost:4000/api/v1/product'
-const categoryUrl='http://localhost:4000/api/v1/category'
+const authUrl='http://localhost:4000/auth'
+const productUrl='http://localhost:4000/product'
+const categoryUrl='http://localhost:4000/category'
 
 
 export const getPhoto=(id)=>{
@@ -24,6 +24,25 @@ export const createProduct=(productData)=>{
     return axios.post(productUrl+"/create-product",productData);
 }
 
+//register user or admin
+export const register=(data)=>{
+    return axios.post(authUrl+"/signup",data);
+}
+export const login=(data)=>{
+    return axios.post(authUrl+"/login",data);
+}
+export const forgetPassword=(data)=>{
+    return axios.post(authUrl+"/forgot-password",data);
+}
+
+
+//route auth to validate user or admin
+export const isUser=()=>{
+    return axios.get(authUrl+"user-auth");
+}
+export const isAdmin=()=>{
+    return axios.get(authUrl+"admin-auth");
+}
 
 //homepage endpoints
 

@@ -48,7 +48,7 @@ const ProductDetails = () => {
       <div className="flex flex-col sm:flex-row justify-around gap-4 max-h-[500px] mt-10">
         <div className="">
           <img
-            src={`http://localhost:4000/api/v1/product/product-photo/${product._id}`}
+            src={getPhoto(product._id)}
             className=""
             alt={product.name}
             height="300"

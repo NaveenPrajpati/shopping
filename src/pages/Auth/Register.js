@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Layout from "./../../components/Layout/Layout";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import "../../styles/AuthStyles.css";
+import { register } from "../../services/apiEndpoints";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -17,14 +17,14 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:4000/api/v1/auth/register", {
+      const res = await register({
         name,
         email,
         password,
         phone,
         address,
         answer,
-      });
+      })
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
         navigate("/login");
@@ -38,7 +38,7 @@ const Register = () => {
   };
 
   return (
-    <Layout title="Register - Ecommer App">
+    <Layout title="Register-Ecommer App">
         <div className=" bg-slate-300 mx-10">
         
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden ">

@@ -1,7 +1,10 @@
 import React from "react";
 
-import { Helmet } from "react-helmet";
+
 import { Toaster } from "react-hot-toast";
+import Header from "./Header";
+import Navbar from "./Navbar";
+import { Helmet } from "react-helmet-async";
 const Layout = ({ children, title, description, keywords, author }) => {
   return (
     <div className="">
@@ -12,6 +15,8 @@ const Layout = ({ children, title, description, keywords, author }) => {
         <meta name="author" content={author} />
         <title>{title}</title>
       </Helmet>
+      <Header />
+    <Navbar/>
       <div className="">
         <Toaster />
         {children}
@@ -22,7 +27,7 @@ const Layout = ({ children, title, description, keywords, author }) => {
 };
 
 Layout.defaultProps = {
-  title: "Ecommerce app - shop now",
+  title: "Ecommerce app-shop now",
   description: "mern stack project",
   keywords: "mern,react,node,mongodb",
   author: "naveen",

@@ -12,15 +12,21 @@ export default function ProductCard({photo,name,price,desc,slug}) {
       alt="not avaliable"
     />
         <h5 className="">{name}</h5>
-        <h5 className="">
+        <p className="">
+        {desc.substring(0, 60)}...
+      </p>
+      <p>rating...</p>
+      <div className='flex justify-between'>
+      <h5 className="">
           {price.toLocaleString("en-IN", {
             style: "currency",
             currency:"INR",
           })}
         </h5>
-      <p className="">
-        {desc.substring(0, 60)}...
-      </p>
+        <p className='font-semibold line-through'>MRP</p>
+      </div>
+     
+    
   </div>
   )
 }

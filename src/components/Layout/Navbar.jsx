@@ -25,31 +25,25 @@ function Navbar() {
 			<nav className="bg-teal-400 shadow-lg">
 				<div className="max-w-6xl mx-auto p-1 flex justify-around items-center">
 
-								{/* <!-- Website Logo --> */}
-								<select name="" id="" className='p-2 rounded-lg outline-none font-semibold'>
-									<option value=""> <Link
-										className="text-white text-lg font-semibold "
-										to={"/categories"}
-									>
-										Categories
-									</Link></option>
-									{categories?.map((c, index) => (
-										<option key={index} className="text-center my-2">
-											<Link
-												className="text-blue-700  font-semibold "
-												to={`/category/${c.slug}`}
-											>
-												{c.name}
-											</Link>
-										</option>
-									))}
-								</select>
+								{/* <!-- categories button --> */}
+                <div className="bg-white px-2 h-10 rounded-md relative text-center group text-2xl font-semibold" >
+                <p className=''>Categories</p>
+            <div className="hidden group-hover:block hover:cursor-pointer  p-2 absolute top-10 w-[200px]" >
+          {categories.map((c) => (
+                <Link to={`/category/${c.slug}`} key={c._id} className=" block border-2 rounded-lg text-teal-500 bg-white my-1 border-teal-500">
+                  {c.name}
+                </Link>     
+          ))}
+            </div>
+        </div>
+
 
 							{/* <!-- Primary Navbar items --> */}
 							<div className="hidden md:flex items-center space-x-5">
 								<a href="" className="text-black border-b-2  font-semibold ">Tranding</a>
 								<a href="" className="text-white font-semibold hover:text-green-500 transition duration-300">Best Selling</a>
 								<a href="" className="text-white font-semibold hover:text-green-500 transition duration-300">Deal Of Day</a>
+								<a href="/cart" className="text-white font-semibold hover:text-green-500 transition duration-300">All Products</a>
 								<a href="" className="text-white font-semibold hover:text-green-500 transition duration-300">FAQ</a>
 							</div>
 					
@@ -72,22 +66,14 @@ function Navbar() {
                 </>
               ) : (
                 <>
-                  <li className="">
-                    <NavLink
-                      className="text-white text-lg font-semibold"
-                      href="#"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      style={{ border: "none" }}
-                    >
-                      {auth?.user?.name}
-                    </NavLink>
-                    <ul className="dropdown-menu">
+                  <div className="group  relative p-1">
+                   <p> {auth?.user?.name}</p>
+                    <ul className="hiddent group-hover:block absolute top-5 p-2 space-y-1">
                       <li>
                         <NavLink
                           to={`/dashboard/${auth?.user?.role===1 ? "admin":"user"
                             }`}
-                          className="dropdown-item"
+                          className=""
                         >
                           Dashboard
                         </NavLink>
@@ -96,13 +82,13 @@ function Navbar() {
                         <NavLink
                           onClick={handleLogout}
                           to="/login"
-                          className="dropdown-item"
+                          className=""
                         >
                           Logout
                         </NavLink>
                       </li>
                     </ul>
-                  </li>
+                  </div>
                 </>
               )}
               <li className="">

@@ -8,9 +8,11 @@ import { AuthProvider } from "./context/auth";
 import { SearchProvider } from "./context/search";
 import { CartProvider } from "./context/cart";
 import "antd/dist/reset.css";
+import { HelmetProvider } from "react-helmet-async";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+  <HelmetProvider>
   <AuthProvider>
     <SearchProvider>
       <CartProvider>
@@ -20,6 +22,7 @@ root.render(
       </CartProvider>
     </SearchProvider>
   </AuthProvider>
+  </HelmetProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

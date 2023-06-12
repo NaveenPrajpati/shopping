@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import "../../styles/AuthStyles.css";
 import { useAuth } from "../../context/auth";
+import { login } from "../../services/apiEndpoints";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,10 +18,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:4000/api/v1/auth/login", {
+      const res = await login({
         email,
         password,
-      });
+      })
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
         setAuth({
@@ -39,7 +40,7 @@ const Login = () => {
     }
   };
   return (
-    <Layout title="Register - Ecommer App">
+    <Layout title="Login-Ecommer App">
       <div className=" bg-slate-300 mx-10">
         
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden ">

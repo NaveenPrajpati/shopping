@@ -159,7 +159,7 @@ const CartPage = () => {
                     </button>
                   ) : (
                     <button
-                      className="btn btn-outline-warning"
+                      className=" border-yellow-500 p-2 border-2 rounded-lg font-semibold"
                       onClick={() =>
                         navigate("/login", {
                           state: "/cart",
@@ -173,9 +173,12 @@ const CartPage = () => {
               )}
               <div className="mt-2">
                 {!clientToken || !auth?.token || !cart?.length ? (
-                  ""
+                  <>
+                  {console.log('ready')}
+                  </>
                 ) : (
                   <>
+                  {console.log('ready')}
                     <DropIn
                       options={{
                         authorization: clientToken,
