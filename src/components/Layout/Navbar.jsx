@@ -22,22 +22,23 @@ function Navbar() {
 
   return (
     <nav className="bg-teal-400 shadow-lg">
-      <div className="max-w-6xl mx-auto p-1 flex justify-around items-center">
+      <div className=" mx-auto p-1 flex justify-around items-center">
         {/* <!-- categories button --> */}
-        <div className="bg-white px-2 h-10 rounded-md relative text-center group text-2xl font-semibold">
-          <p className="">Categories</p>
-          <div className="hidden group-hover:block hover:cursor-pointer  p-2 absolute top-10 w-[200px]">
+        <details className="relative">
+          <summary className="bg-white px-2 h-10 rounded-md  text-center text-2xl font-semibold">Categories</summary>
+          <div className="   p-2 absolute top-10 w-[200px] z-20">
             {categories.map((c) => (
               <Link
                 to={`/category/${c.slug}`}
                 key={c._id}
-                className=" block border-2 rounded-lg text-teal-500 bg-white my-1 border-teal-500"
+                className=" block border-2 rounded-md p-1 text-teal-600 bg-white my-1 border-teal-500 hover:cursor-pointer"
               >
                 {c.name}
               </Link>
             ))}
           </div>
-        </div>
+     
+        </details>
 
         {/* <!-- Primary Navbar items --> */}
         <div className="hidden md:flex items-center space-x-5">
@@ -71,12 +72,13 @@ function Navbar() {
         </div>
 
         {/* <!-- Secondary Navbar items --> */}
-        <ul className="flex items-center justify-center gap-2">
+        <div className="flex items-center justify-center gap-2">
           {!auth?.user ? (
             <div className="flex gap-2 items-center">
               <NavLink
                 to="/register"
                 className="text-white text-lg font-semibold "
+                style={{border:'none'}}
               >
                 Register
               </NavLink>
@@ -112,7 +114,7 @@ function Navbar() {
               </ul>
             </div>
           )}
-          <li className="">
+          <div className="">
             <NavLink
               to="/cart"
               className="text-white text-lg font-semibold flex"
@@ -125,8 +127,8 @@ function Navbar() {
                 </div>
               )}
             </NavLink>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </nav>
   );

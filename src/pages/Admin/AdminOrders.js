@@ -21,7 +21,7 @@ const AdminOrders = () => {
   const [auth, setAuth] = useAuth();
   const getOrders = async () => {
     try {
-      const { data } = await axios.get("http://localhost:4000/api/v1/auth/all-orders");
+      const { data } = await axios.get("http://localhost:4000/auth/all-orders");
       setOrders(data);
     } catch (error) {
       console.log(error);
@@ -34,7 +34,7 @@ const AdminOrders = () => {
 
   const handleChange = async (orderId, value) => {
     try {
-      const { data } = await axios.put(`http://localhost:4000/api/v1/auth/order-status/${orderId}`, {
+      const { data } = await axios.put(`http://localhost:4000/auth/order-status/${orderId}`, {
         status: value,
       });
       getOrders();
@@ -44,7 +44,7 @@ const AdminOrders = () => {
   };
   return (
     <Layout title={"All Orders Data"}>
-      <div className="flex mt-20 mx-10 gap-10">
+      <div className="flex flex-col sm:flex-row mt-20 mx-10 gap-10">
         <div className="w-[300px]">
           <AdminMenu />
         </div>
@@ -89,17 +89,17 @@ const AdminOrders = () => {
                 </table>
                 <div className="container">
                   {o?.products?.map((p, i) => (
-                    <div className="row mb-2 p-3 card flex-row" key={p._id}>
-                      <div className="col-md-4">
+                    <div className=" mb-2 p-3 flex justify-between" key={p._id}>
+                   
                         <img
-                          src={`http://localhost:4000/api/v1/product/product-photo/${p._id}`}
-                          className="card-img-top"
+                          src={`http://localhost:4000/product/product-photo/${p._id}`}
+                          className=""
                           alt={p.name}
                           width="100px"
                           height={"100px"}
                         />
-                      </div>
-                      <div className="col-md-8">
+               
+                      <div className="">
                         <p>{p.name}</p>
                         <p>{p.description.substring(0, 30)}</p>
                         <p>Price : {p.price}</p>

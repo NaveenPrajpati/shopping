@@ -2,8 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 const UserMenu = () => {
   return (
-    <div>
-      <div className="">
+
+     
       <div className="text-center border">
           <h4 className="bg-black text-white p-2">Dashboard</h4>
           <NavLink
@@ -19,8 +19,8 @@ const UserMenu = () => {
             Orders
           </NavLink>
         </div>
-      </div>
-    </div>
+     
+ 
   );
 };
 

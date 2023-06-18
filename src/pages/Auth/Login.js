@@ -42,8 +42,8 @@ const Login = () => {
       <div className=" bg-slate-300 mx-10">
         
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden ">
-      <div className="w-full p-6 m-auto bg-white rounded-md  ring-2 ring-indigo-600 lg:max-w-xl">
-        <h1 className="text-3xl font-semibold text-center text-indigo-700 underline uppercase decoration-wavy">
+      <div className="w-full p-6 m-auto bg-white rounded-md  ring-2 ring-teal-600 lg:max-w-xl">
+        <h1 className="text-3xl font-semibold text-center text-teal-700 underline uppercase decoration-wavy">
           Login Form
         </h1>
         <form className="mt-6" onSubmit={handleSubmit}>
@@ -56,7 +56,7 @@ const Login = () => {
                 type="email"
                 value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-teal-300 focus:ring focus:ring-teal-200 focus:ring-opacity-50"
           
                 placeholder="abc@example.com"
                 required
@@ -71,13 +71,13 @@ const Login = () => {
                 name="name"
                 value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-teal-300 focus:ring focus:ring-teal-200 focus:ring-opacity-50"
                 placeholder="*********"
               />
             </label>
           </div>
          <div className=" text-right my-3">
-          <a href="/forgot-password" className="text-purple-600 font-semibold  ">Forget password?</a>
+          <a href="/forgot-password" className="text-teal-600 font-semibold  ">Forget password?</a>
          </div>
 
           <div class="mb-6">
@@ -86,13 +86,13 @@ const Login = () => {
               className="
             h-10
             px-5
-            text-indigo-100
-            bg-indigo-700
+            text-teal-100
+            bg-teal-700
             rounded-lg
             transition-colors
             duration-150
             focus:shadow-outline
-            hover:bg-indigo-800
+            hover:bg-teal-800
           "
             >
               Login

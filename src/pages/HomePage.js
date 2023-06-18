@@ -123,13 +123,13 @@ const HomePage = () => {
       />
       <div className=" bg-slate-100">
   {/* first strip div   */}
- <div className=" bg-yellow-200 flex flex-wrap justify-center gap-5 p-2">
+ <div className=" bg-yellow-200 flex flex-wrap items-center justify-center gap-5 p-2">
  {bannerData.map((item)=>(
   <div className="flex gap-2 items-center">
     {item.icon}
-    <div className=" space-y-0">
-      <p className=" leading-3">{item.title}</p>
-      <p className=" leading-3">{item.Description}</p>
+    <div className="">
+      <p className="m-0 font-semibold">{item.title}</p>
+      <p className="m-0 font-semibold">{item.Description}</p>
     </div>
   </div>
  ))

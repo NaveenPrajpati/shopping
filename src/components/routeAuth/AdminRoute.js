@@ -11,6 +11,7 @@ export default function PrivateRoute() {
   useEffect(() => {
     const authCheck = async () => {
       const res = await isAdmin()
+      console.log(res)
       if (res.data.ok) {
         setOk(true);
       } else {

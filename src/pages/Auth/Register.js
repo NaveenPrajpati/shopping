@@ -41,8 +41,8 @@ const Register = () => {
         <div className=" bg-slate-300 mx-10">
         
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden ">
-      <div className="w-full p-6 m-auto bg-white rounded-md  ring-2 ring-indigo-600 lg:max-w-xl">
-        <h1 className="text-3xl font-semibold text-center text-indigo-700 underline uppercase decoration-wavy">
+      <div className="w-full p-6 m-auto bg-white rounded-md  ring-2 ring-teal-600 lg:max-w-xl">
+        <h1 className="text-3xl font-semibold text-center text-teal-700 underline uppercase decoration-wavy">
           Registration 
         </h1>
         <form className="mt-6 mx-auto" onSubmit={handleSubmit}>
@@ -62,9 +62,9 @@ const Register = () => {
             border-gray-300
             rounded-md
             shadow-sm
-            focus:border-indigo-300
+            focus:border-teal-300
             focus:ring
-            focus:ring-indigo-200
+            focus:ring-teal-200
             focus:ring-opacity-50
           "
                 placeholder="abc"
@@ -87,9 +87,9 @@ const Register = () => {
             border-gray-300
             rounded-md
             shadow-sm
-            focus:border-indigo-300
+            focus:border-teal-300
             focus:ring
-            focus:ring-indigo-200
+            focus:ring-teal-200
             focus:ring-opacity-50
           "
                 placeholder="abc@example.com"
@@ -105,7 +105,7 @@ const Register = () => {
                 name="text"
                 value={phone}
               onChange={(e) => setPhone(e.target.value)}
-                className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-teal-300 focus:ring focus:ring-teal-200 focus:ring-opacity-50"
                 placeholder="123"
               />
             </label>
@@ -118,7 +118,7 @@ const Register = () => {
                 name="address"
                 value={address}
               onChange={(e) => setAddress(e.target.value)}
-                className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-teal-300 focus:ring focus:ring-teal-200 focus:ring-opacity-50"
                 placeholder="city, state , street"
               />
             </label>
@@ -131,7 +131,7 @@ const Register = () => {
                 name="answer"
                 value={answer}
               onChange={(e) => setAnswer(e.target.value)}
-                className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-teal-300 focus:ring focus:ring-teal-200 focus:ring-opacity-50"
                 placeholder="*********"
               />
             </label>
@@ -144,7 +144,7 @@ const Register = () => {
                 name="name"
                 value={password}
               onChange={(e) => setPassword(e.target.value)}
-                className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-teal-300 focus:ring focus:ring-teal-200 focus:ring-opacity-50"
                 placeholder="********"
               />
             </label>
@@ -156,13 +156,13 @@ const Register = () => {
               className="
             h-10
             px-5
-            text-indigo-100
-            bg-indigo-700
+            text-teal-100
+            bg-teal-700
             rounded-lg
             transition-colors
             duration-150
             focus:shadow-outline
-            hover:bg-indigo-800
+            hover:bg-teal-800
           "
             >
               Register

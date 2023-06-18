@@ -26,7 +26,7 @@ const UpdateProduct = () => {
   const getSingleProduct = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:4000/api/v1/product/get-product/${params.slug}`
+        `http://localhost:4000/product/get-product/${params.slug}`
       );
       setName(data.product.name);
       setId(data.product._id);
@@ -47,7 +47,7 @@ const UpdateProduct = () => {
   //get all category
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get("http://localhost:4000/api/v1/category/get-category");
+      const { data } = await axios.get("http://localhost:4000/category/get-category");
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -73,7 +73,7 @@ const UpdateProduct = () => {
       photo && productData.append("photo", photo);
       productData.append("category", category);
       const { data } = axios.put(
-        `http://localhost:4000/api/v1/product/update-product/${id}`,
+        `http://localhost:4000/product/update-product/${id}`,
         productData
       );
       if (data?.success) {
@@ -94,7 +94,7 @@ const UpdateProduct = () => {
       let answer = window.prompt("Are You Sure want to delete this product ? ");
       if (!answer) return;
       const { data } = await axios.delete(
-        `http://localhost:4000/api/v1/product/delete-product/${id}`
+        `http://localhost:4000/product/delete-product/${id}`
       );
       toast.success("Product DEleted Succfully");
       navigate("/dashboard/admin/products");
@@ -105,19 +105,19 @@ const UpdateProduct = () => {
   };
   return (
     <Layout title={"Dashboard - Create Product"}>
-     <div className="flex mt-20 mx-10 gap-10">
+     <div className="flex flex-col sm:flex-row mt-20 mx-10 gap-10">
         <div className="w-[300px]">
             <AdminMenu />
           </div>
-          <div className="col-md-9">
+          <div className="">
             <h1>Update Product</h1>
-            <div className="m-1 w-75">
+            <div className="m-1 w-72">
               <Select
                 bordered={false}
                 placeholder="Select a category"
                 size="large"
                 showSearch
-                className="form-select mb-3"
+                className=" mb-3"
                 onChange={(value) => {
                   setCategory(value);
                 }}
@@ -130,7 +130,7 @@ const UpdateProduct = () => {
                 ))}
               </Select>
               <div className="mb-3">
-                <label className="btn btn-outline-secondary col-md-12">
+                <label className="font-semibold p-2 rounded-md bg-slate-200">
                   {photo ? photo.name : "Upload Photo"}
                   <input
                     type="file"
@@ -148,16 +148,16 @@ const UpdateProduct = () => {
                       src={URL.createObjectURL(photo)}
                       alt="product_photo"
                       height={"200px"}
-                      className="img img-responsive"
+                      className=""
                     />
                   </div>
                 ) : (
                   <div className="text-center">
                     <img
-                      src={`http://localhost:4000/api/v1/product/product-photo/${id}`}
+                      src={`http://localhost:4000/product/product-photo/${id}`}
                       alt="product_photo"
-                      height={"200px"}
-                      className="img img-responsive"
+                      height={"100px"}
+                      className=""
                     />
                   </div>
                 )}
@@ -167,7 +167,7 @@ const UpdateProduct = () => {
                   type="text"
                   value={name}
                   placeholder="write a name"
-                  className="form-control"
+                  className=""
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
@@ -176,7 +176,7 @@ const UpdateProduct = () => {
                   type="text"
                   value={description}
                   placeholder="write a description"
-                  className="form-control"
+                  className=""
                   onChange={(e) => setDescription(e.target.value)}
                 />
               </div>
@@ -186,7 +186,7 @@ const UpdateProduct = () => {
                   type="number"
                   value={price}
                   placeholder="write a Price"
-                  className="form-control"
+                  className=""
                   onChange={(e) => setPrice(e.target.value)}
                 />
               </div>
@@ -195,7 +195,7 @@ const UpdateProduct = () => {
                   type="number"
                   value={quantity}
                   placeholder="write a quantity"
-                  className="form-control"
+                  className=""
                   onChange={(e) => setQuantity(e.target.value)}
                 />
               </div>
@@ -205,7 +205,7 @@ const UpdateProduct = () => {
                   placeholder="Select Shipping "
                   size="large"
                   showSearch
-                  className="form-select mb-3"
+                  className=" mb-3"
                   onChange={(value) => {
                     setShipping(value);
                   }}

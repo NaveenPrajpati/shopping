@@ -27,7 +27,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put("/api/v1/auth/profile", {
+      const { data } = await axios.put("/auth/profile", {
         name,
         email,
         password,
@@ -55,8 +55,8 @@ const Profile = () => {
         <div className="w-[300px]">
             <UserMenu />
           </div>
-          <div className="col-md-8">
-            <div className="form-container" style={{ marginTop: "-40px" }}>
+          
+         
               <form onSubmit={handleSubmit}>
                 <h4 className="title">USER PROFILE</h4>
                 <div className="mb-3">
@@ -64,7 +64,7 @@ const Profile = () => {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="form-control"
+                    className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     id="exampleInputEmail1"
                     placeholder="Enter Your Name"
                     autoFocus
@@ -75,7 +75,7 @@ const Profile = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="form-control"
+                    className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     id="exampleInputEmail1"
                     placeholder="Enter Your Email "
                     disabled
@@ -86,7 +86,7 @@ const Profile = () => {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="form-control"
+                    className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     id="exampleInputPassword1"
                     placeholder="Enter Your Password"
                   />
@@ -96,7 +96,7 @@ const Profile = () => {
                     type="text"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="form-control"
+                    className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     id="exampleInputEmail1"
                     placeholder="Enter Your Phone"
                   />
@@ -106,18 +106,19 @@ const Profile = () => {
                     type="text"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
-                    className="form-control"
+                    className="w-full block px-16 py-2 mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                     id="exampleInputEmail1"
                     placeholder="Enter Your Address"
                   />
                 </div>
 
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="p-2 bg-blue-300">
                   UPDATE
                 </button>
+              
               </form>
-            </div>
-          </div>
+    
+       
         </div>
   
     </Layout>

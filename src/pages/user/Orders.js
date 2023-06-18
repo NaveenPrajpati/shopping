@@ -4,13 +4,14 @@ import Layout from "./../../components/Layout/Layout";
 import axios from "axios";
 import { useAuth } from "../../context/auth";
 import moment from "moment";
+import { getPhoto } from "../../services/apiEndpoints";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [auth, setAuth] = useAuth();
   const getOrders = async () => {
     try {
-      const { data } = await axios.get("/api/v1/auth/orders");
+      const { data } = await axios.get("http://localhost:4000/auth/orders");
       setOrders(data);
     } catch (error) {
       console.log(error);
@@ -23,18 +24,18 @@ const Orders = () => {
   return (
     <Layout title={"Your Orders"}>
     <div className="flex mt-20 mx-10 gap-10">
-        <div className="w-[300px]">
-          <div className="col-md-3">
+      
+          <div className="w-[300px]">
             <UserMenu />
           </div>
-          <div className="col-md-9">
+          <div className="">
             <h1 className="text-center">All Orders</h1>
             {orders?.map((o, i) => {
               return (
                 <div className="border shadow">
-                  <table className="table">
+                  <table className="w-[600px]">
                     <thead>
-                      <tr>
+                      <tr className="">
                         <th scope="col">#</th>
                         <th scope="col">Status</th>
                         <th scope="col">Buyer</th>
@@ -54,19 +55,19 @@ const Orders = () => {
                       </tr>
                     </tbody>
                   </table>
-                  <div className="container">
+                  <div className="">
                     {o?.products?.map((p, i) => (
-                      <div className="row mb-2 p-3 card flex-row" key={p._id}>
-                        <div className="col-md-4">
+                      <div className="mb-2 p-3 flex justify-between" key={p._id}>
+                      
                           <img
-                            src={`/api/v1/product/product-photo/${p._id}`}
-                            className="card-img-top"
+                            src={getPhoto(p._id)}
+                            className=""
                             alt={p.name}
                             width="100px"
                             height={"100px"}
                           />
-                        </div>
-                        <div className="col-md-8">
+                    
+                        <div className="font-semibold">
                           <p>{p.name}</p>
                           <p>{p.description.substring(0, 30)}</p>
                           <p>Price : {p.price}</p>
@@ -78,7 +79,7 @@ const Orders = () => {
               );
             })}
           </div>
-        </div>
+       
       </div>
     </Layout>
   );

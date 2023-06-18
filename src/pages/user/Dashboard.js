@@ -10,13 +10,13 @@ const Dashboard = () => {
         <div className="w-[300px]">
             <UserMenu />
           </div>
-          <div className="col-md-9">
-            <div className="card w-75 p-3">
+          
+            <div className="">
               <h3>{auth?.user?.name}</h3>
               <h3>{auth?.user?.email}</h3>
               <h3>{auth?.user?.address}</h3>
             </div>
-          </div>
+        
         </div>
   
     </Layout>

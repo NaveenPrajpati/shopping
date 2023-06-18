@@ -14,7 +14,7 @@ const Header = () => {
       <nav className="bg-white px-4  ">
         
           
-          <div className="flex justify-between items-center px-2" id="navbarTogglerDemo01">
+          <div className="flex justify-between items-center px-2 py-1" id="navbarTogglerDemo01">
             <Link to="/" className="text-xl font-semibold flex items-center gap-1">
               <AiOutlineShoppingCart className="text-slate-500 text-2xl font-bold"/> Ecommerce App
             </Link>

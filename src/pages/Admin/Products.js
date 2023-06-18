@@ -10,7 +10,7 @@ const Products = () => {
   //getall products
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get("http://localhost:4000/api/v1/product/get-product");
+      const { data } = await axios.get("http://localhost:4000/product/get-product");
       setProducts(data.products);
     } catch (error) {
       console.log(error);
@@ -24,7 +24,7 @@ const Products = () => {
   }, []);
   return (
     <Layout>
-      <div className="flex mt-20 mx-10 gap-10">
+      <div className="flex flex-col sm:flex-row mt-20 mx-10 gap-10">
         <div className="w-[300px]">
           <AdminMenu />
         </div>
@@ -39,7 +39,7 @@ const Products = () => {
               >
                 <div className="border ml-2 p-1 rounded-lg w-[300px] hover:scale-105" >
                   <img
-                    src={`http://localhost:4000/api/v1/product/product-photo/${p._id}`}
+                    src={`http://localhost:4000/product/product-photo/${p._id}`}
                     className="h-[150px]"
                     alt={p.name}
                   />

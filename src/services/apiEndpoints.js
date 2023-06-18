@@ -38,10 +38,10 @@ export const forgetPassword=(data)=>{
 
 //route auth to validate user or admin
 export const isUser=()=>{
-    return axios.get(authUrl+"user-auth");
+    return axios.get(authUrl+"/user-auth");
 }
 export const isAdmin=()=>{
-    return axios.get(authUrl+"admin-auth");
+    return axios.get(authUrl+"/admin-auth");
 }
 
 //homepage endpoints

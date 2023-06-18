@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 const AdminMenu = () => {
   return (
     
-      <div className="">
+     
         <div className="text-center border">
           <h4 className="bg-black text-white p-2">Admin Panel</h4>
           <NavLink
@@ -37,7 +37,7 @@ const AdminMenu = () => {
             Users
           </NavLink>
         </div>
-      </div>
+
   
   );
 };

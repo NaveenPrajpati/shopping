@@ -63,7 +63,7 @@ const CartPage = () => {
     try {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
-      const { data } = await axios.post("http://localhost:4000/api/v1/product/braintree/payment", {
+      const { data } = await axios.post("http://localhost:4000/product/braintree/payment", {
         nonce,
         cart,
       });
@@ -135,7 +135,7 @@ const CartPage = () => {
               <h4>Total : {totalPrice()} </h4>
               {auth?.user?.address ? (
                 <>
-                  <div className="mb-3">
+                  <div className="mb-3 flex">
                     <h4>Current Address</h4>
                     <h5>{auth?.user?.address}</h5>
                     <button
@@ -172,7 +172,10 @@ const CartPage = () => {
               <div className="mt-2">
                 {!clientToken || !auth?.token || !cart?.length ? (
                   <>
-                  {console.log('ready')}
+                  {
+                    console.log('not ready')
+                   
+                  }
                   </>
                 ) : (
                   <>
