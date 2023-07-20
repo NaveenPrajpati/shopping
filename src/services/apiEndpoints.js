@@ -1,8 +1,12 @@
 import axios from "axios"
 
-const authUrl='http://localhost:4000/auth'
-const productUrl='http://localhost:4000/product'
-const categoryUrl='http://localhost:4000/category'
+// const authUrl='http://localhost:4000/auth'
+// const productUrl='http://localhost:4000/product'
+// const categoryUrl='http://localhost:4000/category'
+const authUrl='https://shoppingback.onrender.com/auth'
+const productUrl='https://shoppingback.onrender.com/product'
+const categoryUrl='https://shoppingback.onrender.com/category'
+
 
 
 export const getPhoto=(id)=>{
